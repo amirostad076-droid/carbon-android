@@ -1,0 +1,32 @@
+name: Build CARBON Native
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'carbon_native/**'
+      - '.github/workflows/carbon-native.yml'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: carbon_native
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: gradle
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.11.1'
+      - run: gradle assembleDebug bundleDebug --stacktrace
+      - uses: actions/upload-artifact@v4
+        with:
+          name: carbon-native-debug
+          path: |
+            carbon_native/app/build/outputs/apk/debug/*.apk
+            carbon_native/app/build/outputs/bundle/debug/*.aab
