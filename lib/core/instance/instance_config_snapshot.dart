@@ -38,8 +38,8 @@ class InstanceConfigSnapshot {
   factory InstanceConfigSnapshot.officialDefault() {
     return const InstanceConfigSnapshot(
       apiBaseUrl: InstanceConstants.defaultApiBaseUrl,
-      gatewayUrl: '',
-      displayDomain: 'fluxer.app',
+      gatewayUrl: 'wss://fluxer.arashyn.ir/gateway',
+      displayDomain: 'fluxer.arashyn.ir',
     );
   }
 

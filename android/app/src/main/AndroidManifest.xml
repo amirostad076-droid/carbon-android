@@ -74,18 +74,26 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="fluxer" android:host="channels" />
-                <data android:scheme="fluxer" android:host="invite" />
-                <data android:scheme="fluxer" android:host="gift" />
-                <data android:scheme="fluxer" android:host="users" />
-                <data android:scheme="fluxer" android:host="settings" android:pathPrefix="/user" />
-                <data android:scheme="fluxer" android:host="notifications" />
-                <data android:scheme="fluxer" android:host="you" />
+                <data android:scheme="carbon" android:host="channels" />
+                <data android:scheme="carbon" android:host="invite" />
+                <data android:scheme="carbon" android:host="gift" />
+                <data android:scheme="carbon" android:host="users" />
+                <data android:scheme="carbon" android:host="settings" android:pathPrefix="/user" />
+                <data android:scheme="carbon" android:host="notifications" />
+                <data android:scheme="carbon" android:host="you" />
             </intent-filter>
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" android:host="fluxer.arashyn.ir" android:pathPrefix="/channels" />
+                <data android:scheme="https" android:host="fluxer.arashyn.ir" android:pathPrefix="/invite" />
+                <data android:scheme="https" android:host="fluxer.arashyn.ir" android:pathPrefix="/gift" />
+                <data android:scheme="https" android:host="fluxer.arashyn.ir" android:pathPrefix="/users" />
+                <data android:scheme="https" android:host="fluxer.arashyn.ir" android:pathPrefix="/settings/user" />
+                <data android:scheme="https" android:host="fluxer.arashyn.ir" android:pathPrefix="/reset" />
+                <data android:scheme="https" android:host="fluxer.arashyn.ir" android:pathPrefix="/notifications" />
+                <data android:scheme="https" android:host="fluxer.arashyn.ir" android:pathPrefix="/you" />
                 <data android:scheme="https" android:host="web.fluxer.app" android:pathPrefix="/channels" />
                 <data android:scheme="https" android:host="web.fluxer.app" android:pathPrefix="/invite" />
                 <data android:scheme="https" android:host="web.fluxer.app" android:pathPrefix="/gift" />

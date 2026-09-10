@@ -1,8 +1,6 @@
 import 'package:cached_network_image_ce/cached_network_image.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:fluxer_app/core/constants/assets.dart';
-import 'package:fluxer_app/core/instance/instance_constants.dart';
 import 'package:fluxer_app/core/instance/instance_runtime_config.dart';
 import 'package:fluxer_app/core/providers/instance_runtime_config_provider.dart';
 import 'package:fluxer_app/core/theme/fluxer_theme_extension.dart';
@@ -170,19 +168,6 @@ class _FallbackWordmark extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (productName == InstanceConstants.defaultProductName) {
-      return Semantics(
-        label: productName,
-        image: true,
-        child: ExcludeSemantics(
-          child: SvgPicture.asset(
-            Assets.fluxerWordmarkMonochrome,
-            height: height,
-            theme: SvgTheme(currentColor: color),
-          ),
-        ),
-      );
-    }
     return Text(
       productName,
       style: context.textStyles.heading.copyWith(

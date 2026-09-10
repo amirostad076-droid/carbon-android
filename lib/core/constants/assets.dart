@@ -1,4 +1,10 @@
 class Assets {
+  /// CARBON brand artwork supplied by the operator.
+  static const String carbonBrand = 'assets/images/carbon-brand.png';
+
+  /// CARBON symbol cropped from the operator artwork.
+  static const String carbonSymbol = 'assets/images/carbon-symbol.png';
+
   /// Fluxer Logo SVG
   static const String fluxerLogoColor = 'assets/images/fluxer-logo-color.svg';
 

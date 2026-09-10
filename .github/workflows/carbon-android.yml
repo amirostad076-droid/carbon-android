@@ -1,0 +1,58 @@
+name: Build CARBON Android
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [carbon]
+    paths-ignore:
+      - '**.md'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: gradle
+      - name: Set up Flutter
+        uses: axi92/flutter-action@72633a794ba0b23276fa4fc465a6cacb758a90c5
+        with:
+          channel: stable
+      - name: Configure OSS dependencies
+        run: dart tool/strip_firebase_deps.dart
+      - name: Set up Rust targets
+        run: |
+          rustup target add aarch64-linux-android armv7-linux-androideabi x86_64-linux-android
+          flutter config --enable-native-assets
+      - name: Get dependencies
+        run: flutter pub get
+      - name: Generate Dart sources
+        run: dart run build_runner build
+      - name: Build universal APK
+        run: >-
+          flutter build apk --release
+          --flavor stableUnifiedpush
+          --dart-define=APP_ENVIRONMENT=stable
+          --dart-define=PUSH_PROVIDER=unifiedpush
+          --dart-define=FLUXER_BASE_URL=https://fluxer.arashyn.ir/api
+          --dart-define=SIGNOZ_OTLP_TRACES_ENDPOINT=
+      - name: Build AAB
+        run: >-
+          flutter build appbundle --release
+          --flavor stableUnifiedpush
+          --dart-define=APP_ENVIRONMENT=stable
+          --dart-define=PUSH_PROVIDER=unifiedpush
+          --dart-define=FLUXER_BASE_URL=https://fluxer.arashyn.ir/api
+          --dart-define=SIGNOZ_OTLP_TRACES_ENDPOINT=
+      - uses: actions/upload-artifact@v4
+        with:
+          name: carbon-android-release
+          path: |
+            build/app/outputs/flutter-apk/*.apk
+            build/app/outputs/bundle/**/*.aab
+          if-no-files-found: error

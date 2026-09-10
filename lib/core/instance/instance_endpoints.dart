@@ -4,19 +4,19 @@ import 'package:fluxer_dart/export.dart';
 // Preserves the global endpoint holder API used across provider and link code.
 // ignore: avoid_classes_with_only_static_members
 abstract final class InstanceEndpoints {
-  static const String defaultMedia = 'https://fluxerusercontent.com';
-  static const String defaultStaticCdn = 'https://fluxerstatic.com';
-  static const String defaultInvite = 'https://fluxer.app';
-  static const String defaultGift = 'https://fluxer.app/gift';
-  static const String defaultWebApp = 'https://web.fluxer.app';
+  static const String defaultMedia = 'https://fluxer.arashyn.ir/media';
+  static const String defaultStaticCdn = 'https://fluxer.arashyn.ir';
+  static const String defaultInvite = 'https://fluxer.arashyn.ir';
+  static const String defaultGift = 'https://fluxer.arashyn.ir/gift';
+  static const String defaultWebApp = 'https://fluxer.arashyn.ir';
 
   static String staticCdn = defaultStaticCdn;
   static String media = defaultMedia;
   static String invite = defaultInvite;
   static String gift = defaultGift;
   static String webApp = defaultWebApp;
-  static String api = '';
-  static String gateway = '';
+  static String api = 'https://fluxer.arashyn.ir/api';
+  static String gateway = 'wss://fluxer.arashyn.ir/gateway';
 
   static void apply(WellKnownFluxerResponse response) {
     final WellKnownFluxerResponseEndpoints endpoints = response.endpoints;
@@ -49,7 +49,7 @@ abstract final class InstanceEndpoints {
     invite = defaultInvite;
     gift = defaultGift;
     webApp = defaultWebApp;
-    api = '';
-    gateway = '';
+    api = 'https://fluxer.arashyn.ir/api';
+    gateway = 'wss://fluxer.arashyn.ir/gateway';
   }
 }
