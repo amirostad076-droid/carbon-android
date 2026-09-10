@@ -39,7 +39,6 @@ jobs:
           --flavor stableUnifiedpush
           --dart-define=APP_ENVIRONMENT=stable
           --dart-define=PUSH_PROVIDER=unifiedpush
-          --dart-define=FLUXER_BASE_URL=https://fluxer.arashyn.ir/api
           --dart-define=SIGNOZ_OTLP_TRACES_ENDPOINT=
       - name: Build AAB
         run: >-
@@ -47,7 +46,6 @@ jobs:
           --flavor stableUnifiedpush
           --dart-define=APP_ENVIRONMENT=stable
           --dart-define=PUSH_PROVIDER=unifiedpush
-          --dart-define=FLUXER_BASE_URL=https://fluxer.arashyn.ir/api
           --dart-define=SIGNOZ_OTLP_TRACES_ENDPOINT=
       - uses: actions/upload-artifact@v4
         with:

@@ -21,45 +21,19 @@ class InstanceBrandMark extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final ({String? compactMarkUrl, String? themeColorHex}) branding = ref
-        .watch(
-          instanceRuntimeConfigProvider.select(
-            (InstanceRuntimeConfig config) => (
-              compactMarkUrl: config.compactMarkUrl,
-              themeColorHex: config.themeColorHex,
-            ),
-          ),
-        );
+    final String? themeColorHex = ref.watch(
+      instanceRuntimeConfigProvider.select(
+        (InstanceRuntimeConfig config) => config.themeColorHex,
+      ),
+    );
     final Color fill =
         backgroundColor ??
-        parseCssHexColor(branding.themeColorHex) ??
+        parseCssHexColor(themeColorHex) ??
         context.colors.brandPrimary;
-    final String? imageUrl = branding.compactMarkUrl;
-    final FluxerBrandLogo fallback = FluxerBrandLogo(
+    return FluxerBrandLogo(
       size: size,
       backgroundColor: fill,
       symbolColor: symbolColor,
-    );
-    if (imageUrl == null) {
-      return fallback;
-    }
-    return ExcludeSemantics(
-      child: SizedBox(
-        width: size,
-        height: size,
-        child: ClipOval(
-          child: ColoredBox(
-            color: fill,
-            child: _RemoteBrandImage(
-              url: imageUrl,
-              width: size,
-              height: size,
-              fit: BoxFit.cover,
-              error: fallback,
-            ),
-          ),
-        ),
-      ),
     );
   }
 }
