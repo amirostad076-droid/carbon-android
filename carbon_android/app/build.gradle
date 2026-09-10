@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace 'ir.arashyn.carbon'
-    compileSdk 35
+    compileSdk 36
 
     defaultConfig {
         applicationId 'ir.arashyn.carbon'
