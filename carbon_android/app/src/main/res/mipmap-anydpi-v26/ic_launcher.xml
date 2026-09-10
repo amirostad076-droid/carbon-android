@@ -1,0 +1,4 @@
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <background android:drawable="@color/carbon_black" />
+    <foreground android:drawable="@drawable/ic_carbon_foreground" />
+</adaptive-icon>
